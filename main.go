@@ -114,10 +114,10 @@ func main() {
 		if upperBound > len(widgetsNRs) {
 			upperBound = len(widgetsNRs)
 		}
-		println(upperBound)
-		println(lowerBound)
+		// println(upperBound)
+		// println(lowerBound)
 		page.Widgets = widgetsNRs[lowerBound:upperBound]
-		println(len(page.Widgets))
+		// println(len(page.Widgets))
 		pages = append(pages, page)
 	}
 
@@ -191,7 +191,7 @@ func queryBuild(reqs []Requests, visual string) string {
 	}
 
 	queryFull := fmt.Sprintf(operation2["line"], metric)
-	fmt.Println(queryFull)
+	// fmt.Println(queryFull)
 	return queryFull
 }
 
