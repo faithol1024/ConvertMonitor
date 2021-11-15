@@ -1,0 +1,125 @@
+{
+  "name": "Campaign Engine Dashboard",
+  "description": null,
+  "permissions": "PUBLIC_READ_WRITE",
+  "pages": [
+    {
+      "name": "Campaign Engine Dashboard",
+      "description": null,
+      "widgets": [
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Validate Use - Success Rate",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 3044908,
+                "query": "from Metric SELECT percentage(sum(promo_campaign_engine_http_validate_use_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Validate Use - Success Rate",
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": 3044908,
+                "query": "from Metric SELECT percentage(sum(promo_campaign_engine_http_validate_use_attempt), where is_success = 'true')  since 1 hour ago"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 90
+              },
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 95
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 17,
+            "row": 1,
+            "height": 3,
+            "width": 8
+          },
+          "title": "[HTTP] Validate Use Response Time",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 3044908,
+                "query": "SELECT max(promo_campaign_engine_http_validate_use_process_time.summary) as 'max_time', average(promo_campaign_engine_http_validate_use_process_time.summary) as '95_perc?' from Metric SINCE 1 hour ago TIMESERIES "
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Validate Use Status",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 3044908,
+                "query": "SELECT sum(promo_campaign_engine_http_validate_use_attempt) from Metric facet is_success, error_code,detail_ SINCE 1 hour ago  "
+              }
+            ]
+          },
+          "linkedEntityGuids": [
+            "MzA0NDkwOHxWSVp8REFTSEJPQVJEfDI2OTY4NjU"
+          ]
+        }
+      ]
+    }
+  ]
+}

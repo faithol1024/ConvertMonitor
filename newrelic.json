@@ -1,0 +1,2041 @@
+{
+ "name": "Suggestion Engine Dashboard (cloned)",
+ "description": null,
+ "permissions": "PUBLIC_READ_WRITE",
+ "pages": [
+  {
+   "name": "Page 1",
+   "description": null,
+   "widgets": [
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 1,
+      "height": 3,
+      "width": 8
+     },
+     "title": "GQL Per Service Latency",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(gql_per_service_latency_95percentile), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 1,
+      "height": 3,
+      "width": 8
+     },
+     "title": "GQL Per Service Error Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(gql_per_service_error_rate), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 17,
+      "row": 1,
+      "height": 3,
+      "width": 8
+     },
+     "title": "GQL Per Service Call Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(gql_per_service_call_rate), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 4,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Suggestion Promo Attempt",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_suggestion_promo_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 4,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Suggestion Promo RPS",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_suggestion_promo_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 17,
+      "row": 4,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Suggestion Promo Success Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_suggestion_promo_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 7,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Suggestion Promo Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_suggestion_promo_process_time.summary) as 'max_time', average(grpc_suggestion_engine_get_suggestion_promo_process_time.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 9,
+      "row": 7,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Suggestion Promo Error Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_suggestion_promo_attempt), where is_success = 'true')  facet is_success,error_code,detail SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 17,
+      "row": 7,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Attempt vs Success",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 1,
+      "row": 10,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Success Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 10,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_promo_logistic_process_time_95percentile.summary) as 'max_time', average(grpc_suggestion_engine_get_promo_logistic_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 10,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Error Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_attempt), where is_success = 'true')  facet is_success,error_code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 13,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[RPS] Get Promo Logistic",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 9,
+      "row": 13,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] get_promo_suggestion_list Error Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_suggestion_list_attempt), where is_success = 'true')  facet is_success,error_code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 17,
+      "row": 13,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] get_promo_suggestion_list Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_promo_suggestion_list_process_time_95percentile.summary) as 'max_time', average(grpc_suggestion_engine_get_promo_suggestion_list_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 1,
+      "row": 16,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Suggested Promo",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_attempt), where is_success = 'true')  facet code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 9,
+      "row": 16,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Sum by Hots",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_attempt), where is_success = 'true')  facet host SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 16,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Sum by Hots",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_attempt), where is_success = 'true')  facet host SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 19,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC][raka delete soon] Get Promo Logistic Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_promo_logistic_process_time.summary) as 'max_time', average(grpc_suggestion_engine_get_promo_logistic_process_time.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 19,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic BULK RPS",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_bulk_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 17,
+      "row": 19,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Get Promo Logistic BULK Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_bulk_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 22,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic Bulk Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_promo_logistic_bulk_process_time_95percentile.summary) as 'max_time', average(grpc_suggestion_engine_get_promo_logistic_bulk_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 9,
+      "row": 22,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic BULK Error Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_bulk_attempt), where is_success = 'true')  facet is_success,error_code,detail SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 17,
+      "row": 22,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[RPS] [GRPC] Get Promo Logistic BULK",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_bulk_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 1,
+      "row": 25,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic BULK Suggested Promo",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_bulk_attempt), where is_success = 'true')  facet code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 25,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Sum of grpc.suggestion_engine.get_promo_logistic_bulk.attempt over env:produc...",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_bulk_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 17,
+      "row": 25,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Get Promo Logistic BULK Attempt",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_logistic_bulk_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 28,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Clear Cache BBO Tag",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(http_promosuggestion_handle_clear_cache_bebas_ongkir_order_tag_process_time_95percentile.summary) as 'max_time', average(http_promosuggestion_handle_clear_cache_bebas_ongkir_order_tag_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 9,
+      "row": 28,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Clear Cache BBO Tag Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(http_promosuggestion_handle_clear_cache_bebas_ongkir_order_tag_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 17,
+      "row": 28,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[STAGING][GRPC] Get Prioritized Promo Suggestion Attempt",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_prioritized_promo_suggestion_attempt), where is_success = 'true')  TIMESERIES since 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 1,
+      "row": 31,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[STAGING][GRPC] Get Prioritized Promo Suggestion Success Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_prioritized_promo_suggestion_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 31,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[STAGING][GRPC] Get Prioritized Promo Suggestion Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_prioritized_promo_suggestion_process_time.summary) as 'max_time', average(grpc_suggestion_engine_get_prioritized_promo_suggestion_process_time.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 31,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[STAGING][GRPC] Get Prioritized Promo Suggestion Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_prioritized_promo_suggestion_attempt), where is_success = 'true')  facet is_success,error_code,detail SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 34,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Save Cache Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(http_promosuggestion_handle_save_cache_process_time_95percentile.summary) as 'max_time', average(http_promosuggestion_handle_save_cache_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 9,
+      "row": 34,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Save Cache Success Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(http_promosuggestion_handle_save_cache_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 17,
+      "row": 34,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Get Cache Success Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(http_promosuggestion_handle_get_cache_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 1,
+      "row": 37,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Save Clear Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(http_promosuggestion_handle_save_cache_attempt), where is_success = 'true')  facet is_success,error_code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 37,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[GRPC] Clear Cache Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_promosuggestion_handle_clear_cache_process_time_95percentile.summary) as 'max_time', average(grpc_promosuggestion_handle_clear_cache_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 37,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Get Cache Success Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(http_promosuggestion_handle_get_cache_attempt), where is_success = 'true')  facet is_success SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 1,
+      "row": 40,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Save Promo History Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_save_promo_history_process_time_95percentile.summary) as 'max_time', average(grpc_suggestion_engine_save_promo_history_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 9,
+      "row": 40,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Save Promo History Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_save_promo_history_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 40,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Save Promo History Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_save_promo_history_attempt), where is_success = 'true')  facet is_success,error_code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 1,
+      "row": 43,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Save Promo History Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_save_promo_history_attempt), where is_success = 'true')  facet is_success,error_code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 43,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Get Promo History Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_promo_history_process_time_95percentile.summary) as 'max_time', average(grpc_suggestion_engine_get_promo_history_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 17,
+      "row": 43,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Get Promo History Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_history_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 1,
+      "row": 46,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Get Promo History Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_history_attempt), where is_success = 'true')  facet is_success,error_code SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 46,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[HTTP] GetPromoDataByCode Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(thirdparty_http_campaign_engine_getPromoDataByCode_process_time_95percentile.summary) as 'max_time', average(thirdparty_http_campaign_engine_getPromoDataByCode_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 46,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[HTTP] GetPromoDataByCode Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(thirdparty_http_campaign_engine_getPromoDataByCode_attempt), where is_success = 'true')  facet is_success,error_code,detail SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 1,
+      "row": 49,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[HTTP] GetPromoDataByCode Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(thirdparty_http_campaign_engine_getPromoDataByCode_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 49,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[HTTP] Validate Promo Stacking Logistic Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(thirdparty_http_campaign_engine_validatePromoStackingLogistic_process_time_95percentile.summary) as 'max_time', average(thirdparty_http_campaign_engine_validatePromoStackingLogistic_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 49,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[HTTP] Validate Promo Stacking Logistic Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(thirdparty_http_campaign_engine_validatePromoStackingLogistic_attempt), where is_success = 'true')  facet is_success,error_code,detail SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 1,
+      "row": 52,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[HTTP] Validate Promo Stacking Logistic Success Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(thirdparty_http_campaign_engine_validatePromoStackingLogistic_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.line"
+     },
+     "layout": {
+      "column": 9,
+      "row": 52,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[grpc] GetPromoSuggestionDetail Response Time",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT max(grpc_suggestion_engine_get_promo_suggestion_detail_process_time_95percentile.summary) as 'max_time', average(grpc_suggestion_engine_get_promo_suggestion_detail_process_time_95percentile.summary) as '95_perc?' SINCE 1 hour ago TIMESERIES "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 52,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[grpc] GetPromoSuggestionDetail Status",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_suggestion_detail_attempt), where is_success = 'true')  facet is_success,error_code,detail SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.billboard"
+     },
+     "layout": {
+      "column": 1,
+      "row": 55,
+      "height": 3,
+      "width": 8
+     },
+     "title": "[grpc] GetPromoSuggestionDetail Rate",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(grpc_suggestion_engine_get_promo_suggestion_detail_attempt), where is_success = 'true')  since 1 hour ago"
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": [
+       {
+        "alertSeverity": "WARNING",
+        "value": 90
+       },
+       {
+        "alertSeverity": "CRITICAL",
+        "value": 95
+       }
+      ]
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 9,
+      "row": 55,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Response Time 95%",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(tdk_dependency_call_95percentile), where is_success = 'true')  facet usecase SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 55,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Response Time Max",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(tdk_dependency_call_max), where is_success = 'true')  facet usecase SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 1,
+      "row": 58,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Status Success False Breakdown with Result",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(tdk_dependency_call_count), where is_success = 'true')  facet handler,result SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 9,
+      "row": 58,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Success False by Use Cases",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(tdk_dependency_call_count), where is_success = 'true')  facet handler,usecase SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    },
+    {
+     "visualization": {
+      "id": "viz.bar"
+     },
+     "layout": {
+      "column": 17,
+      "row": 58,
+      "height": 3,
+      "width": 8
+     },
+     "title": "Success TRUE by Destination",
+     "rawConfiguration": {
+      "legend": {
+       "enabled": true
+      },
+      "nrqlQueries": [
+       {
+        "accountId": 3044908,
+        "query": "from Metric SELECT percentage(sum(tdk_dependency_call_count), where is_success = 'true')  facet handler,usecase SINCE 1 hour ago "
+       }
+      ],
+      "yAxisLeft": {
+       "zero": true
+      },
+      "dataFormatters": null,
+      "facet": {
+       "showOtherSeries": false
+      },
+      "thresholds": null
+     },
+     "linkedEntityGuids": null
+    }
+   ]
+  }
+ ]
+}
