@@ -156,7 +156,7 @@ func GetRow() int {
 
 func queryBuild(reqs []Requests, visual string) string {
 	operation := map[string]string{
-		"viz.bar":       "from Metric SELECT percentage(sum(%s), where is_success = 'true')  facet %s SINCE 1 hour ago ",
+		"viz.bar":       "from Metric SELECT sum(%s) facet %s SINCE 1 hour ago ",
 		"viz.billboard": "from Metric SELECT percentage(sum(%s), where is_success = 'true')  since 1 hour ago",
 	}
 	operation2 := map[string]string{
